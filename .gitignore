@@ -2,8 +2,10 @@
 # Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
 ################################################################################
 
-/fs.py
+
 /.vs
 /env
 /test_images
 /__pycache__
+/env1/Lib/site-packages/setuptools-58.1.0.dist-info
+/env1
