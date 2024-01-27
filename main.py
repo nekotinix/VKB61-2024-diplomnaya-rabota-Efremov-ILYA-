@@ -4,6 +4,7 @@ import os
 from PIL import Image
 import diskpart
 from tkinter import filedialog
+import polet
 path_vdisks=[]
 extension=".vhd"
 print('path_diskov',path_vdisks)
@@ -69,7 +70,7 @@ class App(customtkinter.CTk):
         self.home_frame_large_image_label = customtkinter.CTkLabel(self.home_frame,text='')
         self.home_frame_large_image_label.grid(row=0, column=0, padx=20, pady=20)
 
-        self.home_frame_button_1 = customtkinter.CTkButton(self.home_frame, text="Создание виртуального диска",command=self.open_input_dialog_event)
+        self.home_frame_button_1 = customtkinter.CTkButton(self.home_frame, text="Создание виртуального диска",command=self.create_virtualdisk_event)
         self.home_frame_button_1.grid(row=1, column=0, padx=20, pady=10)
         self.checkbox_1=customtkinter.CTkCheckBox(self.home_frame,text="только для чтения")
         self.checkbox_1.grid(row=2, column=1, padx=20, pady=10)
@@ -155,17 +156,27 @@ class App(customtkinter.CTk):
         
     def change_appearance_mode_event(self, new_appearance_mode):
         customtkinter.set_appearance_mode(new_appearance_mode)
-    def open_input_dialog_event(self):
-        dialog = customtkinter.CTkInputDialog(text="Введите путь хранения диска", title="Путь хранения")
-        print("CTkInputDialog:", dialog.get_input())
-        if dialog.get_input== None:
-            print('Введите значение')
+    def create_virtualdisk_event(self):
+        filetypes = [('Virtual Hard Disk', '*.vhd')]
+        vhd_path = filedialog.asksaveasfilename(filetypes=filetypes, defaultextension='.vhd')
+        vhd_path=vhd_path.replace("/",'\\')
+        print('Путь создания диска',vhd_path)
+
         dialog1=customtkinter.CTkInputDialog(text="Введите размер в Гб", title="Размер")
-        print("CTkInputDialog:", dialog1.get_input())
+        vhd_size=dialog1.get_input()
         dialog2=customtkinter.CTkInputDialog(text="Введите имя подключения диска", title="Имя диска")
-        print("CTkInputDialog:", dialog2.get_input())
-        dialog3=customtkinter.CTkInputDialog(text="Введите пароль", title="пароль")
-        print("CTkInputDialog:",dialog3.get_input())
+        label= dialog2.get_input()
+        dialog3=customtkinter.CTkInputDialog(text="Введите букву подключения диска", title="Буква диска")
+        letter = dialog3.get_input()
+        dialog4=customtkinter.CTkInputDialog(text="Введите пароль", title="пароль")
+        passw=dialog4.get_input()
+        if diskpart.add_hash(passw) == True:
+            self.home_frame_text_box1.insert('0.1' ,f'Диск  {vhd_path} создан\n')
+            self.home_frame_text_box1.insert('0.1' ,'Пароль сохранен\n')
+            vhdpath='C:\\new2.vhd'
+            diskpart.create_virtual_disk(vhd_path,vhd_size,label,letter)
+        else:
+            self.home_frame_text_box1.insert('0.1' ,'Неуспешно\n')
         
         
     def add_disk_button_event(self):
@@ -180,7 +191,6 @@ class App(customtkinter.CTk):
             if diskpart.hash_comparisson(passw) == True:
                 self.home_frame_text_box1.insert('0.1' ,'Пароль верный\n')
                 x=diskpart.attach_virtual_disk_read_only(filename)
-                print(filename)
                 self.home_frame_text_box1.insert('0.1' ,f'Диск  {filename} подключен в режиме чтения\n')
             else:
                 self.home_frame_text_box1.insert('0.1' ,'Пароль неверный\n')
@@ -195,11 +205,24 @@ class App(customtkinter.CTk):
             print('pvd',path_vdisks)
             dialog3=customtkinter.CTkInputDialog(text="Введите пароль", title="пароль")
             passw=dialog3.get_input()
+            dialog4=customtkinter.CTkInputDialog(text="Введите букву диска", title="Буква диска")
+            letter=dialog4.get_input()
+            dialog5=customtkinter.CTkInputDialog(text="Включить шифрование на лету?", title="Шифрование на лету")
+            answer=dialog5.get_input()
+            
             if diskpart.hash_comparisson(passw) == True:
                 self.home_frame_text_box1.insert('0.1' ,'Пароль верный\n')
                 diskpart.attach_virtual_disk(filename)
                 print(filename)
-                self.home_frame_text_box1.insert('0.1' ,f'Диск{filename} Подключен\n')
+                print(filename)
+                root_dir= filename[:3] +'\\'
+                root_dir=letter+root_dir[1:]
+                print(root_dir)
+                if answer== 'y':
+                    polet.let_shifr(root_dir)
+                    self.home_frame_text_box1.insert('0.1' ,f'Диск{filename} Подключен\n')
+                else:
+                    print("Неподключено:")
             else:
                 self.home_frame_text_box1.insert('0.1' ,'Пароль неверный\n')   
     def remove_disk_event(self):
@@ -230,5 +253,5 @@ def on_closing():
     
 if __name__ == "__main__":
     app = App()
-    #app.protocol("WM_DELETE_WINDOW",on_closing)
+    app.protocol("WM_DELETE_WINDOW",on_closing)
     app.mainloop()

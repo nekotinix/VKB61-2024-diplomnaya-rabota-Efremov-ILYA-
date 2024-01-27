@@ -3,18 +3,18 @@ import pwinput
 import subprocess
 import os
 from GOST_34_11_2012 import Hash
-from fs import open_fs
+import fs
 import keyring
 import psutil
-# #присвоение пути
-# vhd_path = "C:\\MyDrive"
-# #Присвоение размера  
-# vhd_size = "1024" # 1 GB
-# #надпись
-# label="test2"
+# присвоение пути
+vhd_path = "C:\\test.vhd"
+# Присвоение размера  
+vhd_size = "1024" # 1 GB
+# надпись
+label="test"
 fs="ntfs"
-# letter="G"
-# #Cвободное место
+letter="d"
+#Cвободное место
 
 def free_space():
     # Получение информации о всех дисках
@@ -108,9 +108,9 @@ def detach_virtual_disk(vhd_path2):
     os.rename(vhd_path2, filename)
     print('Виртуальный диск отключен')
 
-def view_tree():
-    my_fs=open_fs('C:')
-    my_fs.tree()
+# def view_tree():
+#     my_fs=open_fs('C:')
+#     my_fs.tree()
    
     
 def get_pass():
@@ -118,25 +118,22 @@ def get_pass():
     print(pd)
 
 
-def add_hash():
-    y=Hash('pass',256)
-    y1=Hash('pass',256)
+def add_hash(passw):
+    y=Hash(passw,256)
+    y1=Hash(passw,256)
     print('Хэш',y)
     #Присвоение хэша пароля в хранилище
     keyring.set_password('system','test',y)
     #Извлечение хэша из хранилища
     password=keyring.get_password('system','test')
-    print(password)
     y1=str(y1)
     password=str(password)
     if y1==password:
         print('Пароль верный:')
-        print(y1)
-        print(password)
+        return True
     else:
         print('Пароль неверный:')
-        print(y1)
-        print(password)
+        return False
 free_space()
 def hash_comparisson(passw):
 #Извлечение хэша из хранилища
@@ -156,8 +153,7 @@ import datetime
 def backup(vhd_path,backup_folder):
     
     # Указываем путь к файлу vhd и папке для сохранения бэкапа
-    vhd_path = 'C:\\MyDrive'
-    backup_folder = 'C:\\back'
+    
 
     # Создаем папку для бэкапа, если ее нет
     if not os.path.exists(backup_folder):
@@ -171,3 +167,12 @@ def backup(vhd_path,backup_folder):
     # Копируем файл vhd в папку бэкапа с новым именем
     shutil.copy2(vhd_path, backup_file_path)
     print(f'Создан бэкап файла {vhd_path} в {backup_file_path}')
+
+def automount():
+    with open("automount.txt", "r") as file:
+        for line in file.readlines():
+            if not line:
+                break
+            print(line.strip())
+            print(line,'line')
+            attach_virtual_disk(line)
