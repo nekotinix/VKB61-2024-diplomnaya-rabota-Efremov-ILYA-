@@ -11,4 +11,9 @@
 
 
 
+
 ![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/5cb3cb74-1254-46ec-8019-0455366152fb)
+
+Подраздел меню Главное:
+
+Создание виртуального диска
