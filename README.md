@@ -95,6 +95,11 @@
  
  ![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/91a28156-cecc-44c0-adea-6134a6b80826)
 
+Результат работы программы:
+
+![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/47d97841-f77e-4ffd-a9d9-4df861df0eb0)
+
+
 
 
 
