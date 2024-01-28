@@ -45,10 +45,6 @@
 
 ![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/c01e5c7f-6e9a-4b2c-a379-49f29022b502)
 
-
-![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/2511736c-625e-488c-b314-ceaede39666e)
-
-
 Подключение виртуального  диска имеет два режима:
 
 **- Обычный**
