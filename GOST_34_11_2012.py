@@ -1,5 +1,6 @@
 ﻿from bitstring import BitArray
 import os
+import Points_of_ECC
 def Hash(name, bitrate):
 
     def X(k,a):
