@@ -1,6 +1,5 @@
 ﻿import os
 import time
-import cryptography.hazmat.primitives.ciphers as ciphers
 import magma
 import keyring
 key=keyring.get_password('system','test')
