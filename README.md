@@ -65,7 +65,8 @@
 
 При открытии данные снова доступны.
 
-![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/fc4afce0-7151-4d6f-b4df-478929c2687c)
+![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/78caf98d-e0ed-4f2a-950a-bcc08e689e97)
+
 
 ** - Для чтения **
 
