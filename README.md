@@ -99,6 +99,7 @@
 
 ![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/47d97841-f77e-4ffd-a9d9-4df861df0eb0)
 
+Для восстановления файла из бэкапа необходимо с помощью командной строки, вытащить файл из данной папки.
 
 
 
