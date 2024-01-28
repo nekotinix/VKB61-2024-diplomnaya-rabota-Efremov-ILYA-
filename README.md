@@ -7,12 +7,7 @@
 
 Главное окно программы:
 
-
-
-
-
-
-![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/5cb3cb74-1254-46ec-8019-0455366152fb)
+![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/35434e98-f199-4e44-be72-33e273a7d658)
 
 Подраздел меню Главное:
 
