@@ -54,9 +54,6 @@
 
 ![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/74588c91-fe14-4a81-96ec-289a7b08110d)
 
-Пример вывода программы:
-
-![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/7c08d57b-54e3-4a9c-a834-51550c3af4fa)
 
 **Шифрование на лету:**
 
@@ -76,6 +73,10 @@
 **- Для чтения**
 
 Диск доступен только для чтения, операции записи недоступны, возвращается ошибка. Шифрование на лету работает только на расшифровку данных.
+
+Пример вывода программы:
+
+![image](https://github.com/nekotinix/VKB61-2024-diplomnaya-rabota-Efremov-ILYA-/assets/62836642/7c08d57b-54e3-4a9c-a834-51550c3af4fa)
 
 Пример отображения в утилите diskpart:
 
