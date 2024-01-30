@@ -8,7 +8,7 @@ def let_shifr(root_dir):
     root_dir =str('')
 
 
-    # создаем функцию для шифрования файла
+    # создаем функцию для шифрования пути 
     def encrypt_file(path):
         with open(path, 'rb') as f:
             data = f.read()
@@ -18,7 +18,7 @@ def let_shifr(root_dir):
             with open(path, 'wb') as f:
                 f.write(encrypted_data)
 
-    # создаем функцию для расшифровки файла
+    # создаем функцию для расшифровки пути
     def decrypt_file(path):
         with open(path, 'rb') as f:
             data = f.read()
@@ -45,10 +45,22 @@ def let_shifr(root_dir):
 
                 # проверяем, был ли файл открыт
                 if st.st_mode & 0o200:
-                # файл открыт, расшифровываем его
+                # файл открыт
                     decrypt_file(path)
                 else:
-                    # файл закрыт, шифруем его
+                    # файл закрыт
                     encrypt_file(path)
         time.sleep(10)
+block_size = 64
+with open(path, 'rb') as f:
+    while True:
+        block = f.read(block_size)
+        if not block:
+            break
+        Decrypt_blocks = magma.decrypt(block,passw) 
+blocks=[]       
+with open(path, 'wb') as f:
+    for block in blocks:
+        magma.encrypt(block,passw) 
+        f.write(block) 
     
